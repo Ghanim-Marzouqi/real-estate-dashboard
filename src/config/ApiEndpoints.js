@@ -6,6 +6,8 @@ const GET_ALL_USERS = "/u/users";
 const ADD_NEW_USER = "/u/user";
 const UPDATE_EXISTING_USER = "/u/user";
 const DELETE_EXISTING_USER = "/u/user";
+const SYNC_DATA = "/p/property-sync";
+const LOAD_DATA = "/p/properties";
 
 export {
     LOGIN_URL,
@@ -15,5 +17,7 @@ export {
     GET_ALL_USERS,
     ADD_NEW_USER,
     UPDATE_EXISTING_USER,
-    DELETE_EXISTING_USER
+    DELETE_EXISTING_USER,
+    SYNC_DATA,
+    LOAD_DATA
 }

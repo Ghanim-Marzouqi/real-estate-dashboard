@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 
 // reactstrap components
 import { Container } from "reactstrap";
@@ -16,16 +16,40 @@ import EditUser from "../views/pages/EditUser";
 
 import { adminRoutes, userRoutes } from "../routes";
 
-import { getUserState } from "../store";
+import { getUserState, dataState } from "../store";
+
+import { loadData } from "../services";
 
 const Admin = (props) => {
   const location = useLocation();
   const user = useRecoilValue(getUserState);
+  const [, setDataState] = useRecoilState(dataState);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const loadPropertyData = async () => {
+      const response = await loadData({});
+      console.log("response", response);
+
+      if (response != null) {
+        if (response.status === "success") {
+          setDataState(response.data);
+        } else {
+          setDataState([]);
+        }
+      } else {
+        setDataState([]);
+      }
+    }
+
+    loadPropertyData();
+  }, [setDataState]);
+
+  useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   }, [location]);
+
+
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {

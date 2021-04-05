@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-// javascipt plugin for creating charts
-import Chart from "chart.js";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-// reactstrap components
+import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { Line, Bar, Pie } from "react-chartjs-2";
+
 import {
   Card,
   CardHeader,
@@ -13,26 +11,122 @@ import {
   Col,
 } from "reactstrap";
 
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2,
-} from "variables/charts.js";
-
 import Header from "components/Headers/Header.js";
+import { getDataState } from "../../store";
 
 const Dashboard = (props) => {
-  const [chartExample1Data] = useState("data1");
+  const data = useRecoilValue(getDataState);
+  const [lineChart, setLineChart] = useState({});
+  const [barGraph, setBarGraph] = useState({});
+  const [pieChart, setPieChart] = useState({});
 
-  if (window.Chart) {
-    parseOptions(Chart, chartOptions());
-  }
+  useEffect(() => {
+    const fillLineChartValues = () => {
+      return {
+        labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"],
+        datasets: [
+          {
+            label: "Market Value",
+            data: [
+              data.filter(d => d.year === 2015 && d.source === "MOH").length,
+              data.filter(d => d.year === 2016 && d.source === "MOH").length,
+              data.filter(d => d.year === 2017 && d.source === "MOH").length,
+              data.filter(d => d.year === 2018 && d.source === "MOH").length,
+              data.filter(d => d.year === 2019 && d.source === "MOH").length,
+              data.filter(d => d.year === 2020 && d.source === "MOH").length,
+              data.filter(d => d.year === 2021 && d.source === "MOH").length,
+            ],
+            fill: false,
+            borderColor: "rgba(75,192,192,1)"
+          },
+          {
+            label: "Market Price",
+            data: [
+              data.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+            ],
+            fill: false,
+            borderColor: "#742774"
+          }
+        ]
+      }
+    }
+
+    const fillBarGraphValues = () => {
+      return {
+        labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+        datasets: [
+          {
+            label: 'Msrket Value',
+            backgroundColor: 'rgba(75,192,192,1)',
+            borderWidth: 2,
+            data: [
+              data.filter(d => d.year === 2015 && d.source === "MOH").length,
+              data.filter(d => d.year === 2016 && d.source === "MOH").length,
+              data.filter(d => d.year === 2017 && d.source === "MOH").length,
+              data.filter(d => d.year === 2018 && d.source === "MOH").length,
+              data.filter(d => d.year === 2019 && d.source === "MOH").length,
+              data.filter(d => d.year === 2020 && d.source === "MOH").length,
+              data.filter(d => d.year === 2021 && d.source === "MOH").length,
+            ],
+          },
+          {
+            label: 'Market Price',
+            backgroundColor: '"#742774"',
+            borderWidth: 2,
+            data: [
+              data.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
+              data.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+            ],
+          }
+        ]
+      }
+    }
+
+    const fillPieChartValues = () => {
+      return {
+        labels: ['Sale', 'Mortgage', 'Swap'],
+        datasets: [
+          {
+            label: 'Contract Comparison',
+            backgroundColor: [
+              '#B21F00',
+              '#C9DE00',
+              '#00A6B4',
+            ],
+            hoverBackgroundColor: [
+              '#501800',
+              '#4B5000',
+              '#003350',
+            ],
+            data: [
+              data.filter(d => d.contract === "sale").length,
+              data.filter(d => d.contract === "mortgage").length,
+              data.filter(d => d.contract === "swap").length
+            ]
+          }
+        ]
+      }
+    }
+
+    setLineChart(fillLineChartValues());
+    setBarGraph(fillBarGraphValues());
+    setPieChart(fillPieChartValues());
+  }, [data]);
 
   return (
     <>
-      <Header filter={true} stats={true} />
+      <Header filter={true} sync={true} stats={true} />
       {/* Page content */}
       <Container className="mt--7" fluid>
         <Row>
@@ -46,14 +140,8 @@ const Dashboard = (props) => {
                 </Row>
               </CardHeader>
               <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Line
-                    data={chartExample1[chartExample1Data]}
-                    options={chartExample1.options}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-                </div>
+                {/* Line Chart */}
+                <Line data={lineChart} />
               </CardBody>
             </Card>
           </Col>
@@ -62,17 +150,15 @@ const Dashboard = (props) => {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
-                    <h2 className="mb-0">Market Value / Price Over Time</h2>
+                    <h2 className="mb-0">Market Value / Market Price</h2>
                   </div>
                 </Row>
               </CardHeader>
               <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Bar
-                    data={chartExample2.data}
-                    options={chartExample2.options}
-                  />
+                {/* Bar Chart */}
+                <Bar data={barGraph} />
+                <div className="mt-5">
+                  <Pie data={pieChart} />
                 </div>
               </CardBody>
             </Card>
