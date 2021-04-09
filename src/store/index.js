@@ -2,12 +2,12 @@ export {
     userState,
     selectedUserState,
     dataState,
-    selectedDataState
+    filtersState
 } from "./Atoms";
 
 export {
     getUserState,
     getSelectedUserState,
     getDataState,
-    getSelectedDataState
+    getFiltersState
 } from "./Selectors";

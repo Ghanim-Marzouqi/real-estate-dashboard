@@ -1,5 +1,5 @@
 ul.pagination {
-  display: inline-block;
+  display: inline-flex;
   padding: 0;
   margin: 0;
 }

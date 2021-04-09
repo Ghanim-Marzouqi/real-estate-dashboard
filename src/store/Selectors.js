@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { userState, selectedUserState, dataState, selectedDataState } from "./Atoms";
+import { userState, selectedUserState, dataState, filtersState } from "./Atoms";
 
 const getUserState = selector({
   key: "getUserState",
@@ -25,12 +25,12 @@ const getDataState = selector({
   }
 });
 
-const getSelectedDataState = selector({
-  key: "getSelectedDataState",
+const getFiltersState = selector({
+  key: "getFiltersState",
   get: ({ get }) => {
-    const data = get(selectedDataState);
+    const data = get(filtersState);
     return data;
   }
 });
 
-export { getUserState, getSelectedUserState, getDataState, getSelectedDataState }
+export { getUserState, getSelectedUserState, getDataState, getFiltersState }

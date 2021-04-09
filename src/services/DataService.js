@@ -35,7 +35,7 @@ const cancelSyncData = () => {
 
 const loadData = async (payload) => {
   try {
-    const response = await http.post(`${LOAD_DATA}`, payload);
+    const response = await http.post(`${LOAD_DATA}?page=${payload.page}&limit=${payload.limit}`, payload);
     return response.data;
   } catch (error) {
     console.log("error", error);

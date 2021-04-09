@@ -27,17 +27,17 @@ const Admin = (props) => {
 
   useEffect(() => {
     const loadPropertyData = async () => {
-      const response = await loadData({});
+      const response = await loadData({ page: 1, limit: 30 });
       console.log("response", response);
 
       if (response != null) {
         if (response.status === "success") {
           setDataState(response.data);
         } else {
-          setDataState([]);
+          setDataState({});
         }
       } else {
-        setDataState([]);
+        setDataState({});
       }
     }
 

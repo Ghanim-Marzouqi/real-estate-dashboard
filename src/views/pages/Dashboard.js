@@ -28,13 +28,13 @@ const Dashboard = (props) => {
           {
             label: "Market Value",
             data: [
-              data.filter(d => d.year === 2015 && d.source === "MOH").length,
-              data.filter(d => d.year === 2016 && d.source === "MOH").length,
-              data.filter(d => d.year === 2017 && d.source === "MOH").length,
-              data.filter(d => d.year === 2018 && d.source === "MOH").length,
-              data.filter(d => d.year === 2019 && d.source === "MOH").length,
-              data.filter(d => d.year === 2020 && d.source === "MOH").length,
-              data.filter(d => d.year === 2021 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2015 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2016 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2017 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2018 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2019 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2020 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2021 && d.source === "MOH").length,
             ],
             fill: false,
             borderColor: "rgba(75,192,192,1)"
@@ -42,13 +42,13 @@ const Dashboard = (props) => {
           {
             label: "Market Price",
             data: [
-              data.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
             ],
             fill: false,
             borderColor: "#742774"
@@ -62,17 +62,17 @@ const Dashboard = (props) => {
         labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
         datasets: [
           {
-            label: 'Msrket Value',
+            label: 'Market Value',
             backgroundColor: 'rgba(75,192,192,1)',
             borderWidth: 2,
             data: [
-              data.filter(d => d.year === 2015 && d.source === "MOH").length,
-              data.filter(d => d.year === 2016 && d.source === "MOH").length,
-              data.filter(d => d.year === 2017 && d.source === "MOH").length,
-              data.filter(d => d.year === 2018 && d.source === "MOH").length,
-              data.filter(d => d.year === 2019 && d.source === "MOH").length,
-              data.filter(d => d.year === 2020 && d.source === "MOH").length,
-              data.filter(d => d.year === 2021 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2015 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2016 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2017 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2018 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2019 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2020 && d.source === "MOH").length,
+              data.docs.filter(d => d.year === 2021 && d.source === "MOH").length,
             ],
           },
           {
@@ -80,13 +80,13 @@ const Dashboard = (props) => {
             backgroundColor: '"#742774"',
             borderWidth: 2,
             data: [
-              data.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
-              data.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
+              data.docs.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
             ],
           }
         ]
@@ -110,9 +110,9 @@ const Dashboard = (props) => {
               '#003350',
             ],
             data: [
-              data.filter(d => d.contract === "sale").length,
-              data.filter(d => d.contract === "mortgage").length,
-              data.filter(d => d.contract === "swap").length
+              data.docs.filter(d => d.contract === "sale").length,
+              data.docs.filter(d => d.contract === "mortgage").length,
+              data.docs.filter(d => d.contract === "swap").length
             ]
           }
         ]
