@@ -28,13 +28,13 @@ const Dashboard = (props) => {
           {
             label: "Market Value",
             data: [
-              data.docs.filter(d => d.year === 2015 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2016 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2017 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2018 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2019 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2020 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2021 && d.source === "MOH").length,
+              data.mohDocsCount.count2015,
+              data.mohDocsCount.count2016,
+              data.mohDocsCount.count2017,
+              data.mohDocsCount.count2018,
+              data.mohDocsCount.count2019,
+              data.mohDocsCount.count2020,
+              data.mohDocsCount.count2021
             ],
             fill: false,
             borderColor: "rgba(75,192,192,1)"
@@ -42,13 +42,13 @@ const Dashboard = (props) => {
           {
             label: "Market Price",
             data: [
-              data.docs.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+              data.externalDocsCount.count2015,
+              data.externalDocsCount.count2016,
+              data.externalDocsCount.count2017,
+              data.externalDocsCount.count2018,
+              data.externalDocsCount.count2019,
+              data.externalDocsCount.count2020,
+              data.externalDocsCount.count2021
             ],
             fill: false,
             borderColor: "#742774"
@@ -66,13 +66,13 @@ const Dashboard = (props) => {
             backgroundColor: 'rgba(75,192,192,1)',
             borderWidth: 2,
             data: [
-              data.docs.filter(d => d.year === 2015 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2016 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2017 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2018 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2019 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2020 && d.source === "MOH").length,
-              data.docs.filter(d => d.year === 2021 && d.source === "MOH").length,
+              data.mohDocsCount.count2015,
+              data.mohDocsCount.count2016,
+              data.mohDocsCount.count2017,
+              data.mohDocsCount.count2018,
+              data.mohDocsCount.count2019,
+              data.mohDocsCount.count2020,
+              data.mohDocsCount.count2021
             ],
           },
           {
@@ -80,13 +80,13 @@ const Dashboard = (props) => {
             backgroundColor: '"#742774"',
             borderWidth: 2,
             data: [
-              data.docs.filter(d => d.year === 2015 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2016 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2017 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2018 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2019 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2020 && d.source === "EXTERNAL").length,
-              data.docs.filter(d => d.year === 2021 && d.source === "EXTERNAL").length,
+              data.externalDocsCount.count2015,
+              data.externalDocsCount.count2016,
+              data.externalDocsCount.count2017,
+              data.externalDocsCount.count2018,
+              data.externalDocsCount.count2019,
+              data.externalDocsCount.count2020,
+              data.externalDocsCount.count2021
             ],
           }
         ]
@@ -110,9 +110,9 @@ const Dashboard = (props) => {
               '#003350',
             ],
             data: [
-              data.docs.filter(d => d.contract === "sale").length,
-              data.docs.filter(d => d.contract === "mortgage").length,
-              data.docs.filter(d => d.contract === "swap").length
+              data.saleDocsCount,
+              data.mortgageDocsCount,
+              data.swapDocsCount
             ]
           }
         ]

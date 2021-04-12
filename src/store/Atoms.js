@@ -37,7 +37,15 @@ const dataState = atom({
     hasPrevPage: false,
     hasNextPage: false,
     prevPage: 0,
-    nextPage: 0
+    nextPage: 0,
+    saleDocs: [],
+    mortgageDocs: [],
+    swapDocs: [],
+    saleDocsCount: 0,
+    mortgageDocsCount: 0,
+    swapDocsCount: 0,
+    mohDocsCount: {},
+    externalDocsCount: {}
   }
 });
 

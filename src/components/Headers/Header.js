@@ -254,7 +254,7 @@ const Header = ({ filter, sync, stats, page, limit }) => {
                         >
                           Sale Contract
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{data.docs.filter(d => d.contract === "sale").length}</span>
+                        <span className="h2 font-weight-bold mb-0">{data.saleDocsCount}</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -276,7 +276,7 @@ const Header = ({ filter, sync, stats, page, limit }) => {
                         >
                           Mortgage Contract
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{data.docs.filter(d => d.contract === "mortgage").length}</span>
+                        <span className="h2 font-weight-bold mb-0">{data.mortgageDocsCount}</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -298,7 +298,7 @@ const Header = ({ filter, sync, stats, page, limit }) => {
                         >
                           Swap Contract
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{data.docs.filter(d => d.contract === "swap").length}</span>
+                        <span className="h2 font-weight-bold mb-0">{data.swapDocsCount}</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-info text-white rounded-circle shadow">

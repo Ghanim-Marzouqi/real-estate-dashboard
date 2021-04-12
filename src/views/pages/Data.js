@@ -98,7 +98,10 @@ const Data = () => {
           hasPrevPage: false,
           hasNextPage: false,
           prevPage: 0,
-          nextPage: 0
+          nextPage: 0,
+          saleDocs: [],
+          mortgageDocs: [],
+          swapDocs: []
         });
       }
     } else {
@@ -111,7 +114,10 @@ const Data = () => {
         hasPrevPage: false,
         hasNextPage: false,
         prevPage: 0,
-        nextPage: 0
+        nextPage: 0,
+        saleDocs: [],
+        mortgageDocs: [],
+        swapDocs: []
       });
     }
   }
