@@ -64,7 +64,7 @@ const EditUser = () => {
       setAlert({
         visible: true,
         color: "warning",
-        message: "phone cannot be empty"
+        message: "phone number cannot be empty"
       });
       return;
     }
@@ -83,6 +83,33 @@ const EditUser = () => {
         visible: true,
         color: "warning",
         message: "user type cannot be empty"
+      });
+      return;
+    }
+
+    if (!isValidEmail(form.email)) {
+      setAlert({
+        visible: true,
+        color: "warning",
+        message: "email is not valid"
+      });
+      return;
+    }
+
+    if (form.phone.length !== 8) {
+      setAlert({
+        visible: true,
+        color: "warning",
+        message: "phone number must be 8 digits"
+      });
+      return;
+    }
+
+    if (form.phone.substr(0, 1) !== "7" && form.phone.substr(0, 1) !== "9") {
+      setAlert({
+        visible: true,
+        color: "warning",
+        message: "phone number must start with 7 or 9"
       });
       return;
     }
@@ -123,6 +150,11 @@ const EditUser = () => {
         message: ""
       });
     }, 3000);
+  }
+
+  const isValidEmail = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
   }
 
   return (

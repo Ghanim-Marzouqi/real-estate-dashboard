@@ -49,8 +49,6 @@ const Admin = (props) => {
     document.scrollingElement.scrollTop = 0;
   }, [location]);
 
-
-
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {

@@ -20,6 +20,24 @@ const Dashboard = (props) => {
   const [barGraph, setBarGraph] = useState({});
   const [pieChart, setPieChart] = useState({});
 
+  const pieChartOptions = {
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+          var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          var total = meta.total;
+          var currentValue = dataset.data[tooltipItem.index];
+          var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+          return currentValue + ' (' + percentage + '%)';
+        },
+        title: function (tooltipItem, data) {
+          return data.labels[tooltipItem[0].index];
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     const fillLineChartValues = () => {
       return {
@@ -115,7 +133,8 @@ const Dashboard = (props) => {
               data.swapDocsCount
             ]
           }
-        ]
+        ],
+
       }
     }
 
@@ -158,7 +177,7 @@ const Dashboard = (props) => {
                 {/* Bar Chart */}
                 <Bar data={barGraph} />
                 <div className="mt-5">
-                  <Pie data={pieChart} />
+                  <Pie data={pieChart} options={pieChartOptions} />
                 </div>
               </CardBody>
             </Card>
